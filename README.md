@@ -2,13 +2,13 @@
 
 CloudWatchのアラームをChatWorkに通知。
 
-昔はこれを使ってたけど途中で動かなくなったので自分で作り直した。
-https://github.com/chatwork/lambda-sns-to-chatwork-function
-LambdaがGolang対応したのでGoで再度作り直し。
+昔はこれを使ってたけど途中で動かなくなったので自分で作り直した。  
+https://github.com/chatwork/lambda-sns-to-chatwork-function  
+LambdaがGolang対応したのでGoで再度作り直し。Golang歴は1ヶ月もないけど具体的に作りたいものがあれば作ることはできる。
 
 ## デプロイまでの構成
-これを参考にCodeBuildやCodePipelineを使うように設定。
-https://aws.amazon.com/jp/blogs/compute/announcing-go-support-for-aws-lambda/
+これを参考にCodeBuildやCodePipelineを使うように設定。  
+https://aws.amazon.com/jp/blogs/compute/announcing-go-support-for-aws-lambda/  
 
 難しい場合はローカルでビルドしてアップロードすればいい。このくらいの規模ならそれで十分。
 
