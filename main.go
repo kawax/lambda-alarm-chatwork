@@ -31,7 +31,13 @@ func handler(ctx context.Context, snsEvent events.SNSEvent) ([]byte, error) {
 		log.Fatal(err)
 	}
 
-	postMessage := fmt.Sprintf("[info][title]%s %s(%s)[/title]%s[/info]", message.AlarmName, message.AlarmDescription, message.NewStateValue, message.NewStateReason)
+	postMessage := fmt.Sprintf(
+		"[info][title]%s %s(%s)[/title]%s[/info]",
+		message.AlarmName,
+		message.AlarmDescription,
+		message.NewStateValue,
+		message.NewStateReason,
+	)
 
 	chatwork := chatwork.NewClient(os.Getenv("CHATWORK_API_KEY"))
 
