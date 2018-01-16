@@ -17,7 +17,13 @@ https://aws.amazon.com/jp/blogs/compute/announcing-go-support-for-aws-lambda/
 2. トピックのサブスクリプションでLambdaを設定。
 3. CloudWatch アラームの通知の送信先にSNSトピックを設定。
 
-## 環境変数
+## 環境変数(CodeBuild)
+CodeBuildの環境変数。元の記事ではbuildspec.ymlに書いてるけど分離。
+
+- S3_BUCKET
+- PACKAGE
+
+## 環境変数(Lambda)
 Lambdaの環境変数で以下を設定。
 
 - CHATWORK_API_KEY
