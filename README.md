@@ -24,7 +24,7 @@ CodeBuildの環境変数。元の記事ではbuildspec.ymlに書いてるけど�
 - PACKAGE
 
 ## 環境変数(Lambda)
-Lambdaの環境変数で以下を設定。
+Lambdaの環境変数で以下を設定。複数のルームに通知したい場合はCodePipelineのStagingで複数作ればいいはず。
 
 - CHATWORK_API_KEY
 - CHATWORK_ROOM_ID
