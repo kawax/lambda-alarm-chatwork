@@ -13,6 +13,7 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+// Message struct
 type Message struct {
 	NewStateValue    string `json:"NewStateValue"`
 	NewStateReason   string `json:"NewStateReason"`
