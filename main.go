@@ -21,7 +21,8 @@ type Message struct {
 	AlarmDescription string `json:"AlarmDescription"`
 }
 
-func handler(ctx context.Context, snsEvent events.SNSEvent) ([]byte, error) {
+// Handler ...
+func Handler(ctx context.Context, snsEvent events.SNSEvent) ([]byte, error) {
 	snsRecord := snsEvent.Records[0].SNS
 
 	message := new(Message)
@@ -45,5 +46,5 @@ func handler(ctx context.Context, snsEvent events.SNSEvent) ([]byte, error) {
 }
 
 func main() {
-	lambda.Start(handler)
+	lambda.Start(Handler)
 }
