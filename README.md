@@ -12,6 +12,11 @@ https://aws.amazon.com/jp/blogs/compute/announcing-go-support-for-aws-lambda/
 
 難しい場合はローカルでビルドしてアップロードすればいい。このくらいの規模ならそれで十分。
 
+```
+GOOS=linux go build -o main
+zip deployment.zip main
+```
+
 ## 通知までの設定
 1. AWS SNSにトピックを作る。
 2. トピックのサブスクリプションでLambdaを設定。
