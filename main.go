@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -24,6 +25,10 @@ type Message struct {
 // Handler ...
 func Handler(ctx context.Context, snsEvent events.SNSEvent) (string, error) {
 	snsRecord := snsEvent.Records[0].SNS
+
+	if snsRecord.Message == "" {
+		return "error", errors.New("SNSRecord is empty")
+	}
 
 	message := new(Message)
 	jsonBytes := ([]byte)(snsRecord.Message)
