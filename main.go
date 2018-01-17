@@ -22,7 +22,7 @@ type Message struct {
 }
 
 // Handler ...
-func Handler(ctx context.Context, snsEvent events.SNSEvent) ([]byte, error) {
+func Handler(ctx context.Context, snsEvent events.SNSEvent) (string, error) {
 	snsRecord := snsEvent.Records[0].SNS
 
 	message := new(Message)
@@ -42,7 +42,9 @@ func Handler(ctx context.Context, snsEvent events.SNSEvent) ([]byte, error) {
 
 	chatwork := chatwork.NewClient(os.Getenv("CHATWORK_API_KEY"))
 
-	return chatwork.PostRoomMessage(os.Getenv("CHATWORK_ROOM_ID"), postMessage)
+	response, err := chatwork.PostRoomMessage(os.Getenv("CHATWORK_ROOM_ID"), postMessage)
+
+	return string(response), err
 }
 
 func main() {
