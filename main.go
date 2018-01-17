@@ -24,11 +24,12 @@ type Message struct {
 
 // Handler ...
 func Handler(ctx context.Context, snsEvent events.SNSEvent) (string, error) {
-	snsRecord := snsEvent.Records[0].SNS
 
-	if snsRecord.Message == "" {
+	if len(snsEvent.Records) == 0 {
 		return "error", errors.New("SNSRecord is empty")
 	}
+
+	snsRecord := snsEvent.Records[0].SNS
 
 	message := new(Message)
 	jsonBytes := ([]byte)(snsRecord.Message)
