@@ -37,7 +37,7 @@ func Handler(ctx context.Context, snsEvent events.SNSEvent) (string, error) {
 	snsRecord := snsEvent.Records[0].SNS
 
 	message := new(Message)
-	jsonBytes := ([]byte)(snsRecord.Message)
+	jsonBytes := []byte(snsRecord.Message)
 
 	if err := json.Unmarshal(jsonBytes, message); err != nil {
 		log.Fatal(err)
