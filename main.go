@@ -14,6 +14,11 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+var (
+	apikey = os.Getenv("CHATWORK_API_KEY")
+	room   = os.Getenv("CHATWORK_ROOM_ID")
+)
+
 // Message struct
 type Message struct {
 	NewStateValue    string `json:"NewStateValue"`
@@ -46,9 +51,17 @@ func Handler(ctx context.Context, snsEvent events.SNSEvent) (string, error) {
 		message.NewStateReason,
 	)
 
-	chatwork := chatwork.NewClient(os.Getenv("CHATWORK_API_KEY"))
+	if len(apikey) == 0 {
+		return "error", errors.New("CHATWORK_API_KEY is empty")
+	}
 
-	response, err := chatwork.PostRoomMessage(os.Getenv("CHATWORK_ROOM_ID"), postMessage)
+	if len(room) == 0 {
+		return "error", errors.New("CHATWORK_ROOM_ID is empty")
+	}
+
+	cw := chatwork.NewClient(apikey)
+
+	response, err := cw.PostRoomMessage(room, postMessage)
 
 	return string(response), err
 }
